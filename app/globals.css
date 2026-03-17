@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+/* ─── Design System Color Tokens ─── */
+:root {
+  --color-primary: #0A66FF;
+  --color-primary-light: #4D94FF;
+  --color-primary-dark: #0047CC;
+
+  --color-bg-dark: #0F172A;
+  --color-bg-mid: #111827;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F7F8FA;
+
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #64748B;
+  --color-text-inverse: #FFFFFF;
+
+  --color-border: #E8ECF0;
+  --color-border-hover: #0A66FF;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+
+  --gradient-primary: linear-gradient(135deg, #0A66FF 0%, #4DA6FF 100%);
+  --gradient-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+
+  --shadow-default: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 12px 28px rgba(10, 102, 255, 0.14);
+  --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  --section-py-desktop: 96px;
+  --section-py-mobile: 64px;
+}
+
+/* ─── Dark Theme Overrides ─── */
+[data-theme="dark"] {
+  --color-bg-dark: #0B0F1A;
+  --color-bg-mid: #0F1420;
+  --color-surface: #141922;
+  --color-surface-muted: #1A2030;
+
+  --color-text-primary: #E8ECF2;
+  --color-text-secondary: #8B95A8;
+  --color-text-inverse: #0F172A;
+
+  --color-border: #2A3244;
+  --color-border-hover: #4D94FF;
+
+  --shadow-default: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 12px 28px rgba(10, 102, 255, 0.25);
+  --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] body {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+@theme inline {
+  --font-clash: var(--font-clash-display);
+  --font-satoshi: var(--font-satoshi);
+  --font-jetbrains: var(--font-jetbrains-mono);
+
+  --color-primary: #0A66FF;
+  --color-primary-light: #4D94FF;
+  --color-primary-dark: #0047CC;
+  --color-bg-dark: #0F172A;
+  --color-bg-mid: #111827;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F7F8FA;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #64748B;
+  --color-text-inverse: #FFFFFF;
+  --color-border: #E8ECF0;
+  --color-border-hover: #0A66FF;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+}
+
+/* ─── Global Smooth Scroll ─── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Base Typography ─── */
+body {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: var(--font-satoshi), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-clash), system-ui, sans-serif;
+}
+
+/* ─── Focus Styles ─── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ─── Skip to Content ─── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  padding: 12px 24px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--color-primary);
+  color: white;
+  z-index: 9999;
+  font-weight: 600;
+}
+
+/* ─── Electric Line Texture (for dark sections) ─── */
+.electric-lines {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 40px
+  );
+}
+
+/* ─── Trust Bar Marquee ─── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ─── WhatsApp Pulse ─── */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.whatsapp-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: #25D366;
+  animation: pulse-ring 1.5s ease-out 3;
+  z-index: -1;
+}
+
+/* ─── Scroll indicator bounce ─── */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* ─── Slider Styles ─── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 999px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(10, 102, 255, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(10, 102, 255, 0.3);
+}
+
+/* ─── Scrollbar Hide (for horizontal scroll cards) ─── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Elegant Living Curve Animation ─── */
+@keyframes curveWaveRight {
+  0% { stroke-dashoffset: 1600; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { stroke-dashoffset: -1600; opacity: 0; }
+}
+@keyframes curveWaveLeft {
+  0% { stroke-dashoffset: -1600; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { stroke-dashoffset: 1600; opacity: 0; }
+}
+
+.energy-line-1 {
+  stroke-dasharray: 700 3000;
+  animation: curveWaveRight 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 12px var(--color-primary));
+}
+
+.energy-line-2 {
+  stroke-dasharray: 400 3000;
+  animation: curveWaveLeft 9s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.5s;
+  stroke: var(--color-success);
+  stroke-width: 2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 10px var(--color-success));
+}
+
+.energy-line-core {
+  stroke-dasharray: 150 3000;
+  animation: curveWaveRight 4s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.5s;
+  stroke: white;
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px white);
+}
+
+
+/* ─── Subtle section textures for visual interest ─── */
+.section-muted-textured {
+  background-color: var(--color-surface-muted);
+  background-image: radial-gradient(circle at 20% 50%, rgba(10, 102, 255, 0.03) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, rgba(10, 102, 255, 0.02) 0%, transparent 50%);
+}
+
+.section-dark-gradient {
+  background: linear-gradient(135deg, var(--color-bg-dark) 0%, #1a2744 50%, var(--color-bg-dark) 100%);
+  position: relative;
+}
+
+.section-dark-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 30% 40%, rgba(10, 102, 255, 0.08) 0%, transparent 50%),
+                     radial-gradient(circle at 70% 70%, rgba(77, 148, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ─── Animated gradient orb for hero sections ─── */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(135deg, #0A66FF, #4DA6FF, #0047CC, #0A66FF);
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ─── Section heading entrance ─── */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
