@@ -4,6 +4,8 @@ import { Star, ChevronDown, Mail, ArrowDown } from 'lucide-react'
 import { useState } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import HeroBackground from '@/components/ui/HeroBackground'
+import MeetOurTeam from '@/components/sections/MeetOurTeam'
 
 /* ─── Animation variants ─── */
 const fadeIn = {
@@ -80,49 +82,8 @@ export default function AboutUsPage() {
         {/* ══════════════════════════════════════════
             HERO
         ══════════════════════════════════════════ */}
-        <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-          {/* Animated Background Image */}
-          <motion.div
-            initial={{ filter: 'blur(20px)', scale: 1.05 }}
-            animate={{ filter: 'blur(0px)', scale: 1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-            className="absolute inset-0 bg-[url('/assets/images/contact-bg.jpg')] bg-cover bg-center"
-          />
-          {/* Subtle Dark Gradient Overlay for text readability */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(10,26,10,0.3) 0%, rgba(10,26,10,0.6) 100%)' }} />
-
-          {/* Wave Separator Transition */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 translate-y-[2px]">
-            <svg
-              className="relative block w-full h-[20px] sm:h-[30px] md:h-[40px]"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1200 40"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0,40 L1200,40 L1200,0 Q600,80 0,0 Z"
-                className="fill-[var(--color-surface)]"
-              />
-              {/* Layer 1: Wide Blue Energy Wave (Right) */}
-              <path
-                d="M0,0 Q600,80 1200,0"
-                fill="none"
-                className="energy-line-1"
-              />
-              {/* Layer 2: Medium Green Energy Wave (Left) */}
-              <path
-                d="M0,0 Q600,80 1200,0"
-                fill="none"
-                className="energy-line-2"
-              />
-              {/* Layer 3: Fast White Core Spark (Right) */}
-              <path
-                d="M0,0 Q600,80 1200,0"
-                fill="none"
-                className="energy-line-core"
-              />
-            </svg>
-          </div>
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <HeroBackground />
 
           {/* Content */}
           <div className="relative z-10 text-center px-6 max-w-[800px] mx-auto">
@@ -242,51 +203,9 @@ export default function AboutUsPage() {
         </section>
 
         {/* ══════════════════════════════════════════
-            MEET OUR TEAM — scale-up cards
+            MEET OUR TEAM — interactive radial
         ══════════════════════════════════════════ */}
-        <section className="py-24 px-6">
-          <div className="max-w-[1200px] mx-auto">
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-primary)] mb-3 text-center">
-              LEADERSHIP
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-14 text-center"
-              style={{ fontFamily: 'var(--font-clash), Georgia, serif' }}
-            >
-              Meet Our Team
-            </motion.h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {TEAM.map((member, i) => (
-                <motion.div
-                  key={member.name}
-                  custom={i}
-                  variants={scaleUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                  className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-8 text-center hover:shadow-[var(--shadow-hover)] hover:border-[var(--color-border-hover)] transition-all duration-300 cursor-default"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                    className="w-20 h-20 rounded-full mx-auto mb-5 flex items-center justify-center text-white text-2xl font-bold shadow-lg"
-                    style={{ backgroundColor: `hsl(${member.hue}, 55%, 50%)` }}
-                  >
-                    {member.initials}
-                  </motion.div>
-                  <h3 className="text-lg font-bold text-[var(--color-text-primary)]">{member.name}</h3>
-                  <p className="text-sm text-[var(--color-text-secondary)] mt-1">{member.role}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <MeetOurTeam team={TEAM} />
 
         {/* ══════════════════════════════════════════
             WHAT OUR TEAM SAYS

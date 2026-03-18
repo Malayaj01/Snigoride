@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import { STATS } from '@/lib/constants'
-import { useCountUp } from '@/lib/hooks/useCountUp'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import SectionHeading from '@/components/ui/SectionHeading'
 
@@ -16,27 +15,32 @@ function StatItem({
   suffix: string
   label: string
 }) {
-  const { count, ref } = useCountUp(value, 2000)
-
   return (
     <motion.div
-      ref={ref}
       variants={fadeUp}
       className="text-center py-4"
     >
-      <span className="text-2xl mb-2 block" aria-hidden="true">
+      <motion.span 
+        initial={{ scale: 0.5, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 200, damping: 10 }}
+        className="text-4xl mb-3 block" aria-hidden="true"
+      >
         {emoji}
-      </span>
-      <span
+      </motion.span>
+      <motion.span
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
         className="text-3xl md:text-4xl lg:text-5xl font-bold text-white block mb-2"
         style={{
           fontFamily: 'var(--font-jetbrains), monospace',
           fontVariantNumeric: 'tabular-nums',
         }}
       >
-        {count.toLocaleString('en-IN')}
+        {value.toLocaleString('en-IN')}
         {suffix}
-      </span>
+      </motion.span>
       <span className="text-sm text-white/60">{label}</span>
     </motion.div>
   )

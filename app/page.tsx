@@ -3,7 +3,6 @@ import Footer from '@/components/layout/Footer'
 import BackToTop from '@/components/layout/BackToTop'
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
 import Hero from '@/components/sections/Hero'
-import TrustBar from '@/components/sections/TrustBar'
 import WhatWeOffer from '@/components/sections/WhatWeOffer'
 import WhyChooseUs from '@/components/sections/WhyChooseUs'
 import StatsCounter from '@/components/sections/StatsCounter'
@@ -19,7 +18,6 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <TrustBar />
         <WhatWeOffer />
         <WhyChooseUs />
         <StatsCounter />

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowDown, Handshake } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import HeroBackground from '@/components/ui/HeroBackground'
 
 export default function PartnerWithUsPage() {
   return (
@@ -12,49 +13,8 @@ export default function PartnerWithUsPage() {
         {/* ══════════════════════════════════════════
             HERO
         ══════════════════════════════════════════ */}
-        <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-          {/* Animated Background Image */}
-          <motion.div
-            initial={{ filter: 'blur(20px)', scale: 1.05 }}
-            animate={{ filter: 'blur(0px)', scale: 1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-            className="absolute inset-0 bg-[url('/assets/images/contact-bg.jpg')] bg-cover bg-center"
-          />
-          {/* Subtle Dark Gradient Overlay for text readability */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(10,26,10,0.3) 0%, rgba(10,26,10,0.6) 100%)' }} />
-
-          {/* Wave Separator Transition */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 translate-y-[2px]">
-            <svg
-              className="relative block w-full h-[20px] sm:h-[30px] md:h-[40px]"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1200 40"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0,40 L1200,40 L1200,0 Q600,80 0,0 Z"
-                className="fill-[var(--color-surface)]"
-              />
-              {/* Layer 1: Wide Blue Energy Wave (Right) */}
-              <path
-                d="M0,0 Q600,80 1200,0"
-                fill="none"
-                className="energy-line-1"
-              />
-              {/* Layer 2: Medium Green Energy Wave (Left) */}
-              <path
-                d="M0,0 Q600,80 1200,0"
-                fill="none"
-                className="energy-line-2"
-              />
-              {/* Layer 3: Fast White Core Spark (Right) */}
-              <path
-                d="M0,0 Q600,80 1200,0"
-                fill="none"
-                className="energy-line-core"
-              />
-            </svg>
-          </div>
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <HeroBackground />
 
           <div className="relative z-10 text-center px-6 max-w-[850px] mx-auto">
             <motion.div

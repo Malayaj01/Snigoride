@@ -70,9 +70,9 @@ export const FEATURES = [
 ] as const
 
 export const STATS = [
-  { emoji: '🚚', value: 10000, suffix: '+', label: 'Deliveries Completed' },
-  { emoji: '🏙️', value: 50, suffix: '+', label: 'Cities Covered' },
-  { emoji: '🤝', value: 200, suffix: '+', label: 'Business Partners' },
+  { emoji: '🚚', value: 15000, suffix: '+', label: 'Deliveries Completed' },
+  { emoji: '🏙️', value: 5, suffix: '+', label: 'Cities Covered' },
+  { emoji: '🤝', value: 20, suffix: '+', label: 'Business Partners' },
   { emoji: '🌳', value: 5000, suffix: '+', label: 'Tonnes CO₂ Saved' },
 ] as const
 

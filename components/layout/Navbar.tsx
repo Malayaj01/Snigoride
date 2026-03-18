@@ -13,19 +13,19 @@ const NAV_ITEMS = [
   { label: 'Advertising', href: '/advertising' },
   { label: 'Partner With Us', href: '/partner-with-us' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Get the App', href: '#', isCta: true },
+  { label: 'Join us', href: 'https://forms.gle/kijp6WnZagaHt4XMA', isCta: true },
 ]
 
 const SERVICES_DROPDOWN = {
   forRiders: [
-    { title: '2W Rental', description: 'Affordable electric scooter rentals for daily riders', emoji: '🛵' },
-    { title: 'Rent to Own', description: 'Rent an EV today and own it through easy EMIs', emoji: '🔑' },
-    { title: '3W Loader', description: 'Electric three-wheeler cargo for heavy loads', emoji: '🚛' },
+    { title: '2W Rental', description: 'Affordable electric scooter rentals for daily riders', emoji: '🛵', href: '/2-wheeler-rentals' },
+    { title: 'Rent to Own', description: 'Rent an EV today and own it through easy EMIs', emoji: '🔑', href: '/rent-to-own' },
+    { title: '3W Loader', description: 'Electric three-wheeler cargo for heavy loads', emoji: '🚛', href: '/3-wheeler-rentals' },
   ],
   forPartners: [
-    { title: 'Delivery Solution', description: 'Dedicated EV riders for last-mile deliveries', emoji: '📦' },
-    { title: 'Brand Advertising', description: 'Advertise your brand on our EV fleet', emoji: '📢' },
-    { title: 'Fleet Management', description: 'End-to-end fleet management with IoT tracking', emoji: '🔧' },
+    { title: 'Delivery Solution', description: 'Dedicated EV riders for last-mile deliveries', emoji: '📦', href: '/ev-deliveries' },
+    { title: 'Brand Advertising', description: 'Advertise your brand on our EV fleet', emoji: '📢', href: '/snigo-ads' },
+    { title: '4W Rental', description: 'Heavy-Duty Electric Cargo for Bulk ride', emoji: '🚗', href: '/4-wheeler-rentals' },
   ],
 }
 
@@ -42,9 +42,9 @@ const MEGA_MENU_COLUMNS = [
   {
     heading: 'For Riders',
     links: [
-      { label: '2W Services', href: '#' },
-      { label: 'Rent to Own', href: '#' },
-      { label: '3W Loader', href: '#' },
+      { label: '2W Services', href: '/2-wheeler-rentals' },
+      { label: 'Rent to Own', href: '/rent-to-own' },
+      { label: '3W Loader', href: '/3-wheeler-rentals' },
     ],
   },
   {
@@ -53,7 +53,8 @@ const MEGA_MENU_COLUMNS = [
       { label: 'Franchise (FOCO)', href: '/partner-with-us' },
       { label: 'Franchise (FOFO)', href: '/partner-with-us' },
       { label: 'Advertisement', href: '/advertising' },
-      { label: 'EV for Delivery', href: '#' },
+      { label: 'EV for Delivery', href: '/ev-deliveries' },
+      { label: '4W Rental', href: '/4-wheeler-rentals' },
     ],
   },
   {
@@ -67,11 +68,13 @@ const MEGA_MENU_COLUMNS = [
   },
 ]
 
-const PROMO_CARDS = [
-  { emoji: '🛵', title: 'Delivery Solution', subtitle: 'for your business', bg: '#0A66FF' },
-  { emoji: '⚡', title: 'Ab Kamao aur bhi Zyada', subtitle: 'Unlimited Kms', bg: '#10B981' },
-  { emoji: '🚛', title: '₹70,000 to ₹80,000', subtitle: 'monthly with a 3Wheeler', bg: '#0891B2' },
-  { emoji: '📈', title: 'Earn 34%+ ROI', subtitle: 'in just 3 years', bg: '#F59E0B' },
+const PROMO_IMAGES = [
+  '/assets/images/sections/2wheeler.png',
+  '/assets/images/sections/3wheeler.png',
+  '/assets/images/sections/4-wheeler-rentals.png',
+  '/assets/images/sections/ent-to-own.png',
+  '/assets/images/sections/ev-delivery.png',
+  '/assets/images/sections/snigo-ads.png',
 ]
 
 export default function Navbar() {
@@ -181,7 +184,7 @@ export default function Navbar() {
                               {SERVICES_DROPDOWN.forRiders.map((s) => (
                                 <Link
                                   key={s.title}
-                                  href="#"
+                                  href={s.href}
                                   className="flex items-start gap-3 p-3 rounded-xl hover:bg-[var(--color-surface-muted)] transition-colors group"
                                 >
                                   <span className="text-2xl mt-0.5">{s.emoji}</span>
@@ -207,7 +210,7 @@ export default function Navbar() {
                               {SERVICES_DROPDOWN.forPartners.map((s) => (
                                 <Link
                                   key={s.title}
-                                  href="#"
+                                  href={s.href}
                                   className="flex items-start gap-3 p-3 rounded-xl hover:bg-[var(--color-surface-muted)] transition-colors group"
                                 >
                                   <span className="text-2xl mt-0.5">{s.emoji}</span>
@@ -232,6 +235,8 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="bg-[var(--color-primary)] text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-[var(--color-primary-dark)] transition-colors"
                 >
                   {item.label}
@@ -336,23 +341,28 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Bottom Banner */}
-              <div className="bg-[var(--color-primary)] px-6 md:px-8 py-5">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                  {PROMO_CARDS.map((card, i) => (
-                    <motion.div
-                      key={card.title}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 + i * 0.06, duration: 0.3 }}
-                      className="bg-white/15 rounded-xl p-4 cursor-pointer hover:bg-white/25 transition-colors"
+              {/* Bottom Banner Image Marquee */}
+              <div className="bg-[var(--color-primary)] py-5 overflow-hidden flex relative group/marquee pointer-events-auto">
+                <motion.div
+                  className="flex gap-4 px-2 whitespace-nowrap"
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ ease: "linear", duration: 35, repeat: Infinity }}
+                >
+                  {[...PROMO_IMAGES, ...PROMO_IMAGES].map((img, i) => (
+                    <div 
+                      key={i} 
+                      className="relative w-40 h-24 md:w-48 md:h-28 rounded-lg overflow-hidden shadow-lg border border-white/20 shrink-0 bg-white/10 group cursor-pointer"
                     >
-                      <span className="text-2xl">{card.emoji}</span>
-                      <p className="text-white text-sm font-bold mt-1 leading-snug">{card.title}</p>
-                      <p className="text-white/70 text-xs mt-0.5">{card.subtitle}</p>
-                    </motion.div>
+                      <Image 
+                        src={img} 
+                        alt={`Promo item ${i}`} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 160px, 192px"
+                      />
+                    </div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </>
