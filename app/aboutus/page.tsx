@@ -38,19 +38,18 @@ const slideFromRight = {
 
 /* ─── Data ─── */
 const TEAM = [
-  { name: 'Akash Gupta', role: 'CEO & Founder', initials: 'AG', hue: 220 },
-  { name: 'Meera Sharma', role: 'COO', initials: 'MS', hue: 340 },
-  { name: 'Rahul Singh', role: 'CTO', initials: 'RS', hue: 160 },
-  { name: 'Neha Kapoor', role: 'VP, Operations', initials: 'NK', hue: 40 },
-  { name: 'Vikram Patel', role: 'Head of Partnerships', initials: 'VP', hue: 280 },
-  { name: 'Ananya Reddy', role: 'Head of Marketing', initials: 'AR', hue: 100 },
+  { name: 'Gaurav Madhwal', role: 'Founder & CEO', subRole: 'Strategic Vision & Leadership', initials: 'GM', hue: 220, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Alex Rodriguez', role: 'Head of Operations', subRole: 'Fleet Logistics & Market Expansion', initials: 'AR', hue: 340, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Sarah Chen', role: 'Chief Technology Officer', subRole: 'AI & Scalable Systems', initials: 'SC', hue: 160, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Sanjay Thakur', role: 'Head of Execution', subRole: 'Operations & Strategy', initials: 'ST', hue: 40, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Malayaj', role: 'Tech Lead', subRole: 'Software Engineering', initials: 'M', hue: 280, image: '/team/team-placeholder.png', linkedin: '#' },
 ]
 
 const TEAM_SAYS = [
-  { name: 'Akash Gupta', role: 'CEO', quote: 'We started Snigoride because we believe last-mile delivery can be 100% electric without compromising speed or reliability.', rating: 5 },
-  { name: 'Meera Sharma', role: 'COO', quote: 'Our operations are powered by data. Every route is optimized, every rider is supported. That\'s the Snigo way.', rating: 5 },
-  { name: 'Rahul Singh', role: 'CTO', quote: 'Building IoT-connected fleet management from scratch has been the most rewarding challenge of my career.', rating: 5 },
-  { name: 'Neha Kapoor', role: 'VP, Operations', quote: 'Watching our riders go from renting to owning their EVs — that\'s what makes this work meaningful.', rating: 4 },
+  { name: 'Gaurav Madhwal', role: 'Founder & CEO', quote: 'We started Snigoride because we believe last-mile delivery can be 100% electric without compromising speed or reliability.', rating: 5 },
+  { name: 'Amit Rawat', role: 'Co-Founder & Sales Head', quote: 'Our sales strategy is built around trust and long-term partnerships. We grow when our partners grow.', rating: 5 },
+  { name: 'Sunil Singh', role: 'Co-Founder & Ground Operations Lead', quote: 'Every delivery route we optimise is a step closer to a cleaner, greener India. That drives our ground team every day.', rating: 5 },
+  { name: 'Sanjay Thakur', role: 'Head of Execution', quote: 'Execution is where vision meets reality. Our team ensures every plan is delivered with precision and speed.', rating: 5 },
 ]
 
 const FAQS = [
@@ -419,11 +418,10 @@ export default function AboutUsPage() {
                         {REASONS.map((r) => (
                           <label
                             key={r}
-                            className={`border rounded-full px-4 py-2 text-xs font-medium cursor-pointer transition-all duration-200 ${
-                              selectedReason === r
+                            className={`border rounded-full px-4 py-2 text-xs font-medium cursor-pointer transition-all duration-200 ${selectedReason === r
                                 ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-sm'
                                 : 'border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
-                            }`}
+                              }`}
                           >
                             <input type="radio" name="reason" value={r} checked={selectedReason === r} onChange={() => setSelectedReason(r)} className="sr-only" />
                             {r}
