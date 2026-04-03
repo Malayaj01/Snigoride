@@ -9,9 +9,9 @@ import HeroBackground from '@/components/ui/HeroBackground'
 /* ─── Office Data ─── */
 const OFFICES = [
   {
-    city: 'Hyderabad',
-    address: 'Plot 42, Hitec City, Madhapur, Hyderabad, Telangana - 500081',
-    mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3!2d78.37!3d17.44!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSGl0ZWMgQ2l0eQ!5e0!3m2!1sen!2sin!4v1609459200000',
+    city: 'Gurugram (HQ)',
+    address: 'Sector 67, Gurugram, Haryana, India',
+    mapUrl: 'https://maps.google.com/maps?q=Sector%2067,%20Gurugram,%20Haryana&t=&z=13&ie=UTF8&iwloc=&output=embed',
   },
   {
     city: 'Bengaluru',
@@ -203,8 +203,8 @@ export default function ContactPage() {
                   </p>
                   <div className="flex items-center gap-2 mb-8">
                     <Mail size={16} className="text-[var(--color-primary)]" />
-                    <a href="mailto:help@SNIGORIDE.com" className="text-[var(--color-primary)] text-sm font-medium hover:underline">
-                      help@SNIGORIDE.com
+                    <a href="mailto:info@singoride.com" className="text-[var(--color-primary)] text-sm font-medium hover:underline">
+                      info@singoride.com
                     </a>
                   </div>
 

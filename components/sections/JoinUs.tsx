@@ -142,16 +142,7 @@ export default function JoinUs() {
               </div>
             </div>
 
-            {/* Floating card behind phone */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -right-4 md:right-0 top-8 bg-[var(--color-primary)] text-white rounded-2xl p-4 shadow-xl w-[140px] hidden sm:block"
-            >
-              <div className="text-2xl mb-1">🛵</div>
-              <p className="text-xs font-bold">ZYPP PILOT</p>
-              <p className="text-[10px] text-white/70 mt-0.5">Start riding today</p>
-            </motion.div>
+
           </motion.div>
         </div>
       </div>

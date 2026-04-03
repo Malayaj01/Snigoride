@@ -365,8 +365,8 @@ export default function AboutUsPage() {
                 className="flex items-center justify-center gap-2 mt-3 text-sm text-[var(--color-text-secondary)]"
               >
                 <Mail size={14} />
-                <a href="mailto:help@Snigoride.com" className="hover:text-[var(--color-primary)] transition-colors">
-                  help@Snigoride.com
+                <a href="mailto:info@singoride.com" className="hover:text-[var(--color-primary)] transition-colors">
+                  info@singoride.com
                 </a>
               </motion.div>
             </div>
@@ -381,7 +381,7 @@ export default function AboutUsPage() {
                 className="rounded-2xl overflow-hidden border border-[var(--color-border)] h-[400px] lg:h-auto shadow-sm"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6!2d78.48!3d17.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDIyJzQ4LjAiTiA3OMKwMjgnNDguMCJF!5e0!3m2!1sen!2sin!4v1609459200000"
+                  src="https://maps.google.com/maps?q=Sector%2067,%20Gurugram,%20Haryana&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%" height="100%"
                   style={{ border: 0, minHeight: 400 }}
                   allowFullScreen loading="lazy"

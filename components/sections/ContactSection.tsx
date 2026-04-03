@@ -88,14 +88,14 @@ export default function ContactSection() {
           >
             <div className="rounded-xl overflow-hidden h-[400px] border border-[var(--color-border)]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.31680958677!2d78.24323065!3d17.4123487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=Sector%2067,%20Gurugram,%20Haryana&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="SNIGORIDE Office Location - Hyderabad"
+                title="SNIGORIDE Office Location - Sector 67, Gurugram, Haryana"
               />
             </div>
           </motion.div>

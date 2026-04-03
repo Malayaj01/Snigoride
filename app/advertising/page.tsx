@@ -173,10 +173,13 @@ const BRANDING = [
 ]
 
 const CITIES = [
-  { city: 'Hyderabad',  riders: '6500+', icon: <CityIcon1 /> },
-  { city: 'Bengaluru',  riders: '3000+', icon: <CityIcon2 /> },
-  { city: 'Chennai',    riders: '500+',  icon: <CityIcon3 /> },
-  { city: 'Pune',       riders: '6500+', icon: <CityIcon4 /> },
+  { city: 'Delhi',      state: 'Delhi',        icon: <CityIcon1 /> },
+  { city: 'Noida',      state: 'Uttar Pradesh', icon: <CityIcon2 /> },
+  { city: 'Gurugram',   state: 'Haryana',       icon: <CityIcon3 /> },
+  { city: 'Faridabad',  state: 'Haryana',       icon: <CityIcon4 /> },
+  { city: 'Ghaziabad',  state: 'Uttar Pradesh', icon: <CityIcon1 /> },
+  { city: 'Dehradun',   state: 'Uttarakhand',   icon: <CityIcon2 /> },
+  { city: 'Haldwani',   state: 'Uttarakhand',   icon: <CityIcon3 /> },
 ]
 
 /* ─── Page ─── */
@@ -368,7 +371,7 @@ export default function AdvertisingPage() {
               Promote your brand with a sustainability tag and leverage our massive on-ground presence.
             </motion.p>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
               {CITIES.map((c, i) => (
                 <motion.div
                   key={c.city}
@@ -381,7 +384,7 @@ export default function AdvertisingPage() {
                 >
                   <div className="flex justify-center mb-3">{c.icon}</div>
                   <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-1">{c.city}</h3>
-                  <p className="text-sm text-[var(--color-primary)] font-medium">{c.riders} Active Riders</p>
+                  <p className="text-sm text-[var(--color-primary)] font-medium">{c.state}</p>
                 </motion.div>
               ))}
             </div>

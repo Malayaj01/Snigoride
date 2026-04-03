@@ -93,19 +93,19 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-white/60">
                 <span>📞</span>
-                <a href="tel:+919876543210" className="hover:text-white transition-colors duration-300">
-                  +91 98765 43210
+                <a href="tel:+917252964990" className="hover:text-white transition-colors duration-300">
+                  +91 72529 64990
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-white/60">
                 <span>✉️</span>
-                <a href="mailto:hello@SNIGORIDE.com" className="hover:text-white transition-colors duration-300">
-                  hello@SNIGORIDE.com
+                <a href="mailto:info@singoride.com" className="hover:text-white transition-colors duration-300">
+                  info@singoride.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/60">
                 <span className="mt-0.5">📍</span>
-                <span>Hyderabad, Telangana, India</span>
+                <span>Sector 67, Gurugram, Haryana, India</span>
               </li>
             </ul>
           </div>
