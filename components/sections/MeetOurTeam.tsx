@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { Linkedin } from 'lucide-react'
 
 export type TeamMember = {
@@ -21,6 +20,14 @@ interface MeetOurTeamProps {
 
 export default function MeetOurTeam({ team }: MeetOurTeamProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   const handleCardClick = (index: number) => {
     setActiveIndex(index)
@@ -66,7 +73,7 @@ export default function MeetOurTeam({ team }: MeetOurTeamProps) {
           const zIndex = 10 - Math.abs(offset)
           const scale = isActive ? 1 : 1 - Math.abs(offset) * 0.12
           // Spacing gets tighter the further out they go
-          const x = offset * (typeof window !== 'undefined' && window.innerWidth < 768 ? 140 : 260)
+          const x = offset * (isMobile ? 140 : 260)
 
           // Outline colors to match mockup exactly
           let borderColor = 'border-[#3b82f6] shadow-[0_0_50px_-10px_rgba(59,130,246,0.6)]'
@@ -121,17 +128,33 @@ export default function MeetOurTeam({ team }: MeetOurTeamProps) {
                 }
               }}
             >
-              {/* Profile Image container (The white frame) */}
-              <div className="w-[82%] aspect-[4/4.5] md:aspect-square bg-gradient-to-b from-white to-[#f0f0f0] rounded-[1rem] p-[2px] mb-6 md:mb-8 shadow-inner relative z-10 mx-auto">
-                 <div className="w-full h-full relative rounded-[14px] overflow-hidden bg-white">
-                    {member.image ? (
-                        <Image src={member.image} alt={member.name} fill className="object-cover" />
-                    ) : (
-                        <div className="w-full h-full flex items-center justify-center text-5xl text-gray-300 font-bold">
-                        {member.initials}
-                        </div>
-                    )}
-                 </div>
+              {/* Avatar */}
+              <div className="relative z-10 mx-auto mb-6 md:mb-8 flex items-center justify-center">
+                {/* Outer glow ring */}
+                <div
+                  className="absolute rounded-full blur-xl opacity-40"
+                  style={{
+                    width: '130%',
+                    height: '130%',
+                    background: `radial-gradient(circle, hsla(${member.hue}, 70%, 55%, 0.5), transparent 70%)`,
+                  }}
+                />
+                {/* Avatar circle */}
+                <div
+                  className="relative w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center border-[3px] md:border-[4px] shadow-lg"
+                  style={{
+                    background: `linear-gradient(135deg, hsl(${member.hue}, 65%, 45%), hsl(${(member.hue + 40) % 360}, 55%, 35%))`,
+                    borderColor: `hsla(${member.hue}, 70%, 60%, 0.6)`,
+                    boxShadow: `0 0 30px -5px hsla(${member.hue}, 70%, 50%, 0.4), inset 0 2px 8px rgba(255,255,255,0.15)`,
+                  }}
+                >
+                  <span
+                    className="text-3xl md:text-4xl font-extrabold text-white/90 select-none"
+                    style={{ fontFamily: 'var(--font-clash), Georgia, serif', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
+                  >
+                    {member.initials}
+                  </span>
+                </div>
               </div>
 
               {/* Text Area */}

@@ -53,15 +53,22 @@ export default function HeroBackground() {
 
       {/* Animated floating particles */}
       <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
-        {Array.from({ length: 6 }).map((_, i) => (
+        {[
+          { w: 5.2, h: 6.8, left: 15, top: 20 },
+          { w: 7.1, h: 4.5, left: 29, top: 45 },
+          { w: 4.8, h: 7.3, left: 43, top: 70 },
+          { w: 6.4, h: 5.6, left: 57, top: 20 },
+          { w: 5.9, h: 4.2, left: 71, top: 45 },
+          { w: 7.6, h: 6.1, left: 85, top: 70 },
+        ].map((p, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-white/10"
             style={{
-              width: 4 + Math.random() * 4,
-              height: 4 + Math.random() * 4,
-              left: `${15 + i * 14}%`,
-              top: `${20 + (i % 3) * 25}%`,
+              width: p.w,
+              height: p.h,
+              left: `${p.left}%`,
+              top: `${p.top}%`,
             }}
             animate={{
               y: [0, -30, 0],

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useDeferredValue, useMemo } from 'react'
+import { useState, useDeferredValue, useMemo, useEffect, useRef } from 'react'
 import { motion, useSpring, useTransform } from 'framer-motion'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import { CALC } from '@/lib/constants'
@@ -7,16 +7,23 @@ import { formatINR } from '@/lib/utils'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 function AnimatedNumber({ value, prefix = '' }: { value: number; prefix?: string }) {
-  const spring = useSpring(0, { stiffness: 80, damping: 20 })
+  const spring = useSpring(value, { stiffness: 80, damping: 20 })
   const display = useTransform(spring, (v) =>
     prefix + Math.round(v).toLocaleString('en-IN')
   )
+  const isFirst = useRef(true)
 
-  // Update spring target when value changes
-  spring.set(value)
+  useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false
+      return
+    }
+    spring.set(value)
+  }, [value, spring])
 
   return (
     <motion.span
+      suppressHydrationWarning
       style={{
         fontFamily: 'var(--font-jetbrains), monospace',
         fontVariantNumeric: 'tabular-nums',
