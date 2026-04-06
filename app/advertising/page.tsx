@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
+import { ArrowDown, Shirt, Bike, ShieldCheck, Truck, Package, MapPin, ArrowRight } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import HeroBackground from '@/components/ui/HeroBackground'
@@ -165,21 +165,21 @@ const STATS = [
 ]
 
 const BRANDING = [
-  { title: 'T-Shirt',      emoji: '👕', desc: 'Our riders can become brand ambassadors by wearing t-shirts featuring your logo and messaging. This personal touch creates a stronger connection with the audience on every delivery.' },
-  { title: 'Electric 2W',  emoji: '🛵', desc: 'Our electric scooters, widely used in urban areas, provide a mobile advertising canvas. Your brand can gain extensive exposure as our scooters navigate through high-traffic zones daily.' },
-  { title: 'Helmet',       emoji: '⛑️', desc: 'Helmets are a vital part of our rider\'s gear, offering another prime location for your brand. With your logo prominently displayed, every ride becomes a promotional event.' },
-  { title: '3W Loader',    emoji: '🚛', desc: 'Our electric 3-wheelers cover wider routes with large branding panels. The bigger canvas ensures maximum visibility across industrial zones, markets, and residential areas.' },
-  { title: 'Delivery Box',  emoji: '📦', desc: 'The delivery box is front and centre during every order handoff. Your brand logo on the box ensures a moment of direct engagement with the end customer at point of delivery.' },
+  { title: 'T-Shirt',      icon: <Shirt strokeWidth={1} className="w-[1em] h-[1em] text-yellow-300 drop-shadow-lg" />, desc: 'Our riders can become brand ambassadors by wearing t-shirts featuring your logo and messaging. This personal touch creates a stronger connection with the audience on every delivery.' },
+  { title: 'Electric 2W',  icon: <Bike strokeWidth={1} className="w-[1em] h-[1em] text-teal-300 drop-shadow-lg" />, desc: 'Our electric scooters, widely used in urban areas, provide a mobile advertising canvas. Your brand can gain extensive exposure as our scooters navigate through high-traffic zones daily.' },
+  { title: 'Helmet',       icon: <ShieldCheck strokeWidth={1} className="w-[1em] h-[1em] text-rose-300 drop-shadow-lg" />, desc: 'Helmets are a vital part of our rider\'s gear, offering another prime location for your brand. With your logo prominently displayed, every ride becomes a promotional event.' },
+  { title: '3W Loader',    icon: <Truck strokeWidth={1} className="w-[1em] h-[1em] text-indigo-300 drop-shadow-lg" />, desc: 'Our electric 3-wheelers cover wider routes with large branding panels. The bigger canvas ensures maximum visibility across industrial zones, markets, and residential areas.' },
+  { title: 'Delivery Box', icon: <Package strokeWidth={1} className="w-[1em] h-[1em] text-fuchsia-300 drop-shadow-lg" />, desc: 'The delivery box is front and centre during every order handoff. Your brand logo on the box ensures a moment of direct engagement with the end customer at point of delivery.' },
 ]
 
 const CITIES = [
-  { city: 'Delhi',      state: 'Delhi',        icon: <CityIcon1 /> },
-  { city: 'Noida',      state: 'Uttar Pradesh', icon: <CityIcon2 /> },
-  { city: 'Gurugram',   state: 'Haryana',       icon: <CityIcon3 /> },
-  { city: 'Faridabad',  state: 'Haryana',       icon: <CityIcon4 /> },
-  { city: 'Ghaziabad',  state: 'Uttar Pradesh', icon: <CityIcon1 /> },
-  { city: 'Dehradun',   state: 'Uttarakhand',   icon: <CityIcon2 /> },
-  { city: 'Haldwani',   state: 'Uttarakhand',   icon: <CityIcon3 /> },
+  { city: 'Delhi',      state: 'Delhi' },
+  { city: 'Noida',      state: 'Uttar Pradesh' },
+  { city: 'Gurugram',   state: 'Haryana' },
+  { city: 'Faridabad',  state: 'Haryana' },
+  { city: 'Ghaziabad',  state: 'Uttar Pradesh' },
+  { city: 'Dehradun',   state: 'Uttarakhand' },
+  { city: 'Haldwani',   state: 'Uttarakhand' },
 ]
 
 /* ─── Page ─── */
@@ -274,74 +274,140 @@ export default function AdvertisingPage() {
         </section>
 
         {/* ══════════════════════════════════════════
-            BRANDING SPOTLIGHT
+            BRANDING SPOTLIGHT (BENTO GRID)
         ══════════════════════════════════════════ */}
-        <section className="py-20 px-6 section-muted-textured">
-          <div className="max-w-[1100px] mx-auto">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-[var(--color-text-secondary)] text-sm mb-2"
-            >
-              Explore a range of branding.
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-12"
-              style={{ fontFamily: 'var(--font-clash), Georgia, serif' }}
-            >
-              Give a spotlight to your brand
-            </motion.h2>
-
-            {/* Horizontal scroll on mobile, grid on desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {BRANDING.slice(0, 3).map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  variants={fadeUp(i)}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6 }}
-                  className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden hover:shadow-lg transition-all duration-300 cursor-default"
-                >
-                  {/* Image placeholder */}
-                  <div className="h-[200px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-6xl">
-                    {item.emoji}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-[var(--color-primary)] mb-2">{item.title}</h3>
-                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+        <section className="py-24 px-6 section-muted-textured relative overflow-hidden">
+          {/* Subtle background glow */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--color-primary)] opacity-5 rounded-full blur-[150px] pointer-events-none" />
+          
+          <div className="max-w-[1200px] mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-[var(--color-text-secondary)] text-sm font-semibold tracking-widest uppercase mb-3"
+              >
+                Explore The Canvas
+              </motion.p>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-3xl md:text-5xl font-bold text-[var(--color-text-primary)]"
+                style={{ fontFamily: 'var(--font-clash), Georgia, serif' }}
+              >
+                Give a spotlight to your brand
+              </motion.h2>
             </div>
 
-            {/* Second row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 max-w-[740px]">
-              {BRANDING.slice(3).map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  variants={fadeUp(i + 3)}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6 }}
-                  className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden hover:shadow-lg transition-all duration-300 cursor-default"
-                >
-                  <div className="h-[200px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-6xl">
-                    {item.emoji}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-[var(--color-primary)] mb-2">{item.title}</h3>
-                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+            {/* Bento Grid layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]">
+              
+              {/* Card 0: T-Shirt (1x1) */}
+              <motion.div
+                variants={fadeUp(0)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="relative group col-span-1 row-span-1 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md overflow-hidden hover:border-[var(--color-primary)] hover:shadow-xl transition-all duration-500 flex flex-col justify-end p-8"
+              >
+                {/* Vibrant Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-amber-600/5 opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute top-6 right-6 text-6xl group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 origin-bottom-right">
+                  {BRANDING[0].icon}
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">{BRANDING[0].title}</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-3">{BRANDING[0].desc}</p>
+                </div>
+              </motion.div>
+
+              {/* Card 1: Electric 2W (Featured - 2x2 on Desktop) */}
+              <motion.div
+                variants={fadeUp(1)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="relative group col-span-1 md:col-span-2 row-span-1 md:row-span-2 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md overflow-hidden hover:border-[var(--color-primary)] hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row items-center p-8 md:p-12"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-700/10 opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="relative z-10 flex-1 mb-8 md:mb-0 md:pr-8">
+                  <span className="inline-block px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-bold rounded-full mb-4 border border-[var(--color-primary)]/30">
+                    Highest Visibility
+                  </span>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4">{BRANDING[1].title}</h3>
+                  <p className="text-base text-[var(--color-text-secondary)] leading-relaxed max-w-md">{BRANDING[1].desc}</p>
+                </div>
+
+                <div className="relative z-10 text-[100px] md:text-[140px] lg:text-[180px] drop-shadow-2xl group-hover:scale-110 group-hover:translate-x-4 transition-transform duration-700">
+                  {BRANDING[1].icon}
+                </div>
+              </motion.div>
+
+              {/* Card 2: Helmet (1x1) */}
+              <motion.div
+                variants={fadeUp(2)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="relative group col-span-1 row-span-1 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md overflow-hidden hover:border-[var(--color-primary)] hover:shadow-xl transition-all duration-500 flex flex-col justify-end p-8"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-500/20 to-red-700/10 opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute top-6 right-6 text-6xl group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500 origin-bottom-right drop-shadow-xl">
+                  {BRANDING[2].icon}
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">{BRANDING[2].title}</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-3">{BRANDING[2].desc}</p>
+                </div>
+              </motion.div>
+
+              {/* Card 3: 3W Loader (1x1) */}
+              <motion.div
+                variants={fadeUp(3)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="relative group col-span-1 row-span-1 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md overflow-hidden hover:border-[var(--color-primary)] hover:shadow-xl transition-all duration-500 flex flex-col justify-end p-8"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-700/10 opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute top-6 right-6 text-6xl group-hover:scale-110 group-hover:-translate-x-2 transition-transform duration-500 origin-bottom-right drop-shadow-xl">
+                  {BRANDING[3].icon}
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">{BRANDING[3].title}</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-3">{BRANDING[3].desc}</p>
+                </div>
+              </motion.div>
+
+              {/* Card 4: Delivery Box (2x1 on Desktop) */}
+              <motion.div
+                variants={fadeUp(4)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="relative group col-span-1 md:col-span-2 row-span-1 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-md overflow-hidden hover:border-[var(--color-primary)] hover:shadow-xl transition-all duration-500 flex items-center p-8 md:px-12"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-fuchsia-700/10 opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="relative z-10 text-[80px] drop-shadow-2xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-500 mr-8 hidden sm:block">
+                  {BRANDING[4].icon}
+                </div>
+                
+                <div className="relative z-10 flex-1">
+                  <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary)] mb-2">{BRANDING[4].title}</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed max-w-lg">{BRANDING[4].desc}</p>
+                </div>
+                
+                {/* Mobile emoji fallback */}
+                <div className="absolute top-6 right-6 text-5xl group-hover:scale-110 sm:hidden">
+                  {BRANDING[4].icon}
+                </div>
+              </motion.div>
+
             </div>
           </div>
         </section>
@@ -371,7 +437,7 @@ export default function AdvertisingPage() {
               Promote your brand with a sustainability tag and leverage our massive on-ground presence.
             </motion.p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="flex flex-wrap justify-center gap-4 max-w-[900px] mx-auto">
               {CITIES.map((c, i) => (
                 <motion.div
                   key={c.city}
@@ -379,12 +445,24 @@ export default function AdvertisingPage() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  whileHover={{ y: -6 }}
-                  className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-6 text-center hover:shadow-lg transition-all duration-300 cursor-default"
+                  className="group relative flex items-center gap-4 bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-primary)] rounded-full px-7 py-4 cursor-default transition-all duration-400 shadow-sm hover:shadow-lg hover:-translate-y-1"
                 >
-                  <div className="flex justify-center mb-3">{c.icon}</div>
-                  <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-1">{c.city}</h3>
-                  <p className="text-sm text-[var(--color-primary)] font-medium">{c.state}</p>
+                  {/* Glowing active dot */}
+                  <div className="relative flex h-2.5 w-2.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--color-primary)] shadow-[0_0_10px_var(--color-primary)]" />
+                  </div>
+
+                  {/* Icon */}
+                  <div className="text-[var(--color-text-secondary)] group-hover:text-[var(--color-primary)] transition-colors duration-300 shrink-0">
+                    <MapPin size={22} strokeWidth={1.5} />
+                  </div>
+
+                  {/* Text */}
+                  <div className="flex flex-col text-left pr-2">
+                    <h3 className="text-[0.95rem] font-bold text-[var(--color-text-primary)] leading-tight mb-0.5">{c.city}</h3>
+                    <p className="text-[10px] text-[var(--color-primary)] font-semibold tracking-wide uppercase">{c.state}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -394,26 +472,35 @@ export default function AdvertisingPage() {
         {/* ══════════════════════════════════════════
             CTA BANNER
         ══════════════════════════════════════════ */}
-        <section className="py-16 px-6">
+        <section className="py-24 px-6 relative overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-[900px] mx-auto bg-[var(--color-primary)] rounded-3xl p-10 md:p-14 text-center"
+            className="max-w-[1000px] mx-auto bg-[#0A0F1A] border border-[var(--color-primary)]/20 rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl"
           >
-            <h2 className="text-2xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-clash), Georgia, serif' }}>
-              Ready to Put Your Brand on Wheels?
-            </h2>
-            <p className="text-white/80 text-base mb-8 max-w-[500px] mx-auto">
-              Get in touch with our advertising team to explore custom branding packages starting at just ₹0.10/view.
-            </p>
-            <a
-              href="/contact"
-              className="inline-block bg-white text-[var(--color-primary)] px-8 py-3.5 rounded-full text-base font-bold hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-lg"
-            >
-              Get Started Today
-            </a>
+            {/* Ambient Background Effects */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-full bg-gradient-to-b from-[var(--color-primary)]/30 to-transparent blur-[100px] pointer-events-none" />
+            <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-teal-500/20 rounded-full blur-[80px] pointer-events-none" />
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight" style={{ fontFamily: 'var(--font-clash), Georgia, serif' }}>
+                Ready to Put Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-[var(--color-primary)]">Brand on Wheels?</span>
+              </h2>
+              <p className="text-white/70 text-lg md:text-xl mb-10 max-w-[600px] mx-auto leading-relaxed">
+                Get in touch with our advertising team to explore custom branding packages starting at just <span className="text-white font-bold tracking-wide border-b border-teal-400/50 pb-0.5">₹0.10/view</span>.
+              </p>
+              
+              <a
+                href="/contact"
+                className="group relative inline-flex items-center justify-center gap-3 bg-[var(--color-primary)] text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_var(--color-primary)] overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                <span className="relative z-10">Get Started Today</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+            </div>
           </motion.div>
         </section>
       </main>

@@ -39,10 +39,13 @@ const slideFromRight = {
 /* ─── Data ─── */
 const TEAM = [
   { name: 'Gaurav Madhwal', role: 'Founder & CEO', subRole: 'Strategic Vision & Leadership', initials: 'GM', hue: 220, image: '/team/team-placeholder.png', linkedin: '#' },
-  { name: 'Alex Rodriguez', role: 'Head of Operations', subRole: 'Fleet Logistics & Market Expansion', initials: 'AR', hue: 340, image: '/team/team-placeholder.png', linkedin: '#' },
-  { name: 'Sarah Chen', role: 'Chief Technology Officer', subRole: 'AI & Scalable Systems', initials: 'SC', hue: 160, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Amit Rawat', role: 'Co-Founder & Sales Head', subRole: 'Fleet Logistics & Market Expansion', initials: 'AR', hue: 340, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Sunil Singh', role: 'Co-Founder & Ground Operations Lead', subRole: 'AI & Scalable Systems', initials: 'SC', hue: 160, image: '/team/team-placeholder.png', linkedin: '#' },
   { name: 'Sanjay Thakur', role: 'Head of Execution', subRole: 'Operations & Strategy', initials: 'ST', hue: 40, image: '/team/team-placeholder.png', linkedin: '#' },
-  { name: 'Malayaj', role: 'Tech Lead', subRole: 'Software Engineering', initials: 'M', hue: 280, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Malayaj Singh', role: 'Tech Lead', subRole: 'Software Engineering', initials: 'M', hue: 280, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Riya', role: 'Strategy Associate', subRole: 'Growth & Strategic Planning', initials: 'R', hue: 310, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Sudhir Kumar', role: 'Head of Operation', subRole: 'Ground Operations & Logistics', initials: 'SK', hue: 190, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Anshul Raturi', role: 'Head of Customer Success', subRole: 'Client Relations & Support', initials: 'AR', hue: 30, image: '/team/team-placeholder.png', linkedin: '#' },
 ]
 
 const TEAM_SAYS = [
@@ -419,8 +422,8 @@ export default function AboutUsPage() {
                           <label
                             key={r}
                             className={`border rounded-full px-4 py-2 text-xs font-medium cursor-pointer transition-all duration-200 ${selectedReason === r
-                                ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-sm'
-                                : 'border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
+                              ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-sm'
+                              : 'border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
                               }`}
                           >
                             <input type="radio" name="reason" value={r} checked={selectedReason === r} onChange={() => setSelectedReason(r)} className="sr-only" />
