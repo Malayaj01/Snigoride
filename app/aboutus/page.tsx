@@ -39,13 +39,13 @@ const slideFromRight = {
 /* ─── Data ─── */
 const TEAM = [
   { name: 'Gaurav Madhwal', role: 'Founder & CEO', subRole: 'Strategic Vision & Leadership', initials: 'GM', hue: 220, image: '/team/team-placeholder.png', linkedin: '#' },
-  { name: 'Amit Rawat', role: 'Co-Founder & Sales Head', subRole: 'Fleet Logistics & Market Expansion', initials: 'AR', hue: 340, image: '/team/team-placeholder.png', linkedin: '#' },
-  { name: 'Sunil Singh', role: 'Co-Founder & Ground Operations Lead', subRole: 'AI & Scalable Systems', initials: 'SC', hue: 160, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Amit Rawat', role: 'Co-Founder & Sales Head', subRole: 'Fleet Logistics & Market Expansion', initials: 'AR', hue: 340, image: '/team/amitf.png', linkedin: '#' },
+  { name: 'Sunil Singh', role: 'Co-Founder & Ground Operations Lead', subRole: 'AI & Scalable Systems', initials: 'SC', hue: 160, image: '/team/sunillf.jpeg', linkedin: '#' },
   { name: 'Sanjay Thakur', role: 'Head of Execution', subRole: 'Operations & Strategy', initials: 'ST', hue: 40, image: '/team/team-placeholder.png', linkedin: '#' },
-  { name: 'Malayaj Singh', role: 'Tech Lead', subRole: 'Software Engineering', initials: 'M', hue: 280, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'M S Shekhawat', role: 'Tech Lead', subRole: 'Software Engineering', initials: 'M', hue: 280, image: '/team/macf.png', linkedin: '#' },
   { name: 'Riya', role: 'Strategy Associate', subRole: 'Growth & Strategic Planning', initials: 'R', hue: 310, image: '/team/team-placeholder.png', linkedin: '#' },
   { name: 'Sudhir Kumar', role: 'Head of Operation', subRole: 'Ground Operations & Logistics', initials: 'SK', hue: 190, image: '/team/team-placeholder.png', linkedin: '#' },
-  { name: 'Anshul Raturi', role: 'Head of Customer Success', subRole: 'Client Relations & Support', initials: 'AR', hue: 30, image: '/team/team-placeholder.png', linkedin: '#' },
+  { name: 'Anshul', role: 'Head of Customer Success', subRole: 'Client Relations & Support', initials: 'AR', hue: 30, image: '/team/team-placeholder.png', linkedin: '#' },
 ]
 
 const TEAM_SAYS = [

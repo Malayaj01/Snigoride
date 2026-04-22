@@ -141,19 +141,27 @@ export default function MeetOurTeam({ team }: MeetOurTeamProps) {
                 />
                 {/* Avatar circle */}
                 <div
-                  className="relative w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center border-[3px] md:border-[4px] shadow-lg"
+                  className="relative w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center border-[3px] md:border-[4px] shadow-lg overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, hsl(${member.hue}, 65%, 45%), hsl(${(member.hue + 40) % 360}, 55%, 35%))`,
                     borderColor: `hsla(${member.hue}, 70%, 60%, 0.6)`,
                     boxShadow: `0 0 30px -5px hsla(${member.hue}, 70%, 50%, 0.4), inset 0 2px 8px rgba(255,255,255,0.15)`,
                   }}
                 >
-                  <span
-                    className="text-3xl md:text-4xl font-extrabold text-white/90 select-none"
-                    style={{ fontFamily: 'var(--font-clash), Georgia, serif', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
-                  >
-                    {member.initials}
-                  </span>
+                  {member.image && member.image !== '/team/team-placeholder.png' ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span
+                      className="text-3xl md:text-4xl font-extrabold text-white/90 select-none relative z-10"
+                      style={{ fontFamily: 'var(--font-clash), Georgia, serif', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
+                    >
+                      {member.initials}
+                    </span>
+                  )}
                 </div>
               </div>
 
